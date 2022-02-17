@@ -288,13 +288,13 @@ impl Paddle {
 
     fn up_slow(&mut self){
         if self.pos > 0.0{
-            self.pos -= 5.0;
+            self.pos -= 4.7;
         }
     }
 
     fn down_slow(&mut self){
         if self.pos < (300.0 - self.width){
-            self.pos += 5.0;
+            self.pos += 4.7;
         } 
     }
 }
