@@ -30,7 +30,7 @@ struct Ball {
 
 impl Ball {
     fn new() -> Ball{
-        let randdir: i32 = rand::thread_rng().gen_range(0..3);
+        let randdir: i32 = rand::thread_rng().gen_range(0..4);
         let randdir = match randdir{
             0 => (MovementHorizontal::Left, MovementVertical::Up),
             1 => (MovementHorizontal::Left, MovementVertical::Down),
@@ -48,7 +48,7 @@ impl Ball {
 
     fn render(&mut self, gl: &mut GlGraphics, arg: &RenderArgs){
         use graphics;
-        let WHITE: [f32; 4] = [1.0, 1.0, 1.0, 1.0];
+        let RED: [f32; 4] = [1.0, 0.0, 0.0, 1.0];
 
         let circle = graphics::ellipse::circle(
             self.pos.0 as f64,
@@ -58,7 +58,7 @@ impl Ball {
         gl.draw(arg.viewport(), |c, gl| {
             let transform = c.transform;
 
-            graphics::ellipse(WHITE, circle, transform, gl);
+            graphics::ellipse(RED, circle, transform, gl);
         });
     }
 
@@ -119,7 +119,7 @@ impl Ball {
 
                     // If the Paddle miss the Ball, reset the Ball to the center
                     self.pos = (250.0, 150.0);
-                    let randdir: i32 = rand::thread_rng().gen_range(0..3);
+                    let randdir: i32 = rand::thread_rng().gen_range(0..4);
                     let randdir = match randdir{
                         0 => (MovementHorizontal::Left, MovementVertical::Up),
                         1 => (MovementHorizontal::Left, MovementVertical::Down),
@@ -159,7 +159,7 @@ impl Ball {
 
                     // If the Paddle miss the Ball, reset the Ball to the center
                     self.pos = (250.0, 150.0);
-                    let randdir: i32 = rand::thread_rng().gen_range(0..3);
+                    let randdir: i32 = rand::thread_rng().gen_range(0..4);
                     let randdir = match randdir{
                         0 => (MovementHorizontal::Left, MovementVertical::Up),
                         1 => (MovementHorizontal::Left, MovementVertical::Down),
